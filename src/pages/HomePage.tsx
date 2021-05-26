@@ -1,7 +1,12 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import { GlobalContext } from '../context/GlobalContext';
 
 const HomePage = () => {
-  useEffect(() => {}, []);
+  const {getUsers,users} = useContext(GlobalContext);
+
+  useEffect(() => {
+    getUsers()
+  }, []);
 
   return (
     <div id='home'>
@@ -15,7 +20,14 @@ const HomePage = () => {
       </div>
       <div className='row text-center'>
         <div className='col-6 offset-3'>
-          <ul className='list-group'>{/* Render Users in App */}</ul>
+          <ul className='list-unstyled d-flex flex-wrap justify-content-evenly text-center'>{users?.map((user:User,i:number)=>{
+            return(
+              <div className ="align-items-center m-3" key={i}>
+                 {user.firstName} {user.lastName}
+              </div>
+             
+            )
+          })}</ul>
         </div>
       </div>
     </div>
