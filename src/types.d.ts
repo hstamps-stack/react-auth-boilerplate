@@ -26,4 +26,5 @@ type AuthStateType = {
     loading:boolean;
     error: string;
     userLogin: (creds:Creds) => void;
+    userRegistration: (registerInfo:User) => void;
 }
