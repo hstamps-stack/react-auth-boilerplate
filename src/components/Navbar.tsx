@@ -13,9 +13,12 @@ const Navbar = () => {
     return !!token;
   };
 
+  let navigatePage = useHistory();
+
   const userLogout = () => {
-    // log user out
-    // send user to login page
+    localStorage.clear()
+    
+    navigatePage.push('/auth/login');
   };
 
   return (
